@@ -1,0 +1,30 @@
+/* Default image blur */
+.blur-img {
+  filter: blur(8px);
+  transition: filter 0.8s ease-in-out;
+}
+
+/* Create custom hover blur removal effect */
+.group:hover .blur-img {
+  filter: blur(0);
+  mask-image: radial-gradient(circle at center, transparent 40%, black 100%);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 40%, black 100%);
+  animation: blurRemove 1s ease-out forwards;
+}
+
+/* Animate blur removal diagonally */
+@keyframes blurRemove {
+  0% {
+    filter: blur(8px);
+    mask-image: radial-gradient(circle at center, transparent 0%, black 100%);
+    -webkit-mask-image: radial-gradient(circle at center, transparent 0%, black 100%);
+  }
+  50% {
+    mask-image: radial-gradient(circle at center, transparent 50%, black 100%);
+  }
+  100% {
+    filter: blur(0);
+    mask-image: linear-gradient(to top left, transparent 50%, black 100%);
+    -webkit-mask-image: linear-gradient(to top left, transparent 50%, black 100%);
+  }
+}
